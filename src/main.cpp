@@ -2,16 +2,19 @@
 #include <iostream>
 #include "Cidade.h"
 #include "Trajeto.h"
+#include "Transporte.h"
 using namespace std;
 
 int main()
 {
     Cidade c1("Natal"); 
-    Cidade c2("Recife");
-    Trajeto t1(&c1, &c2, 'T', 300);
-    cout << t1.getOrigem()->getNome() << endl;
-    cout << t1.getDestino()->getNome() << endl;
-    cout << t1.getTipo() << endl;
-    cout << t1.getDistancia() << endl;
+    Transporte t("Barco", 'A', 12, 30, 10, 1, &c1);
+    cout << t.getNome() << endl;
+    cout << t.getTipo() << endl;
+    cout << t.getCapacidade() << endl;
+    cout << t.getVelocidade() << endl;
+    cout << t.getDistanciaEntreDescansos() << endl;
+    cout << t.getTempoDescanso() << endl;
+    cout << t.getLocalAtual()->getNome() << endl;
     return 0;
 }
