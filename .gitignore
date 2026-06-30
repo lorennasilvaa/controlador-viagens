@@ -1,0 +1,40 @@
+# Executáveis
+bin/
+*.exe
+*.out
+*.app
+
+# Arquivos objeto
+*.o
+*.obj
+
+# Bibliotecas
+*.a
+*.so
+*.dll
+*.dylib
+*.lib
+
+# Arquivos temporários de compilação
+*.gch
+*.pch
+
+# Arquivos de debug
+*.dSYM/
+*.pdb
+
+# Arquivos temporários do editor
+*~
+*.swp
+*.swo
+
+# VS Code
+.vscode/
+
+# CLion / IntelliJ
+.idea/
+cmake-build-*/
+
+# Logs
+*.log
+```
