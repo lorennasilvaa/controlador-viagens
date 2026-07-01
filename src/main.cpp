@@ -5,46 +5,56 @@
 #include "Transporte.h"
 #include "Passageiro.h"
 #include "Viagem.h"
+#include "ControladorDeTransito.h"
 using namespace std;
 
 int main()
 {
-    Cidade* natal = new Cidade("Natal");
-    Cidade* parnamirim = new Cidade("Parnamirim");
-    Cidade* macaiba = new Cidade("Macaíba");
+    ControladorDeTransito sistema;
 
-    Trajeto* t1 = new Trajeto(natal, parnamirim,'T', 100);
+    sistema.cadastrarCidade("Natal");
+    sistema.cadastrarCidade("Parnamirim");
 
-    Trajeto* t2 = new Trajeto(parnamirim, macaiba,'T', 60);
+    sistema.cadastrarTrajeto(
+        "Natal",
+        "Parnamirim",
+        'T',
+        120
+    );
 
-    Transporte* onibus = new Transporte(
+    sistema.cadastrarTransporte(
         "Ônibus",
         'T',
         40,
         60,
         300,
         2,
-        natal
+        "Natal"
     );
 
-    Passageiro* p1 = new Passageiro("João", natal);
-    Passageiro* p2 = new Passageiro("Maria", natal);
+    sistema.cadastrarPassageiro(
+        "João",
+        "Natal"
+    );
 
-    vector<Passageiro*> passageiros;
+    vector<string> nomes;
+    
+    nomes.push_back("João");
+    
+    sistema.iniciarViagem(
+        "Ônibus",
+        nomes,
+        "Natal",
+        "Parnamirim"
+    );
 
-    passageiros.push_back(p1);
-    passageiros.push_back(p2);
-
-    Viagem* v1 = new Viagem(onibus,passageiros,t1);
-
-    Viagem* v2 =new Viagem(onibus,passageiros,t2);
-
-    v1->setProxima(v2);
-
-    v1->iniciarViagem();
-
-    v1->avancarHoras(2);
-    v2->relatarEstado();
+    sistema.avancarHoras(1);
+    
+    sistema.relatarEstado();
+    
+    sistema.avancarHoras(1);
+    
+    sistema.relatarEstado();
     
     return 0;
 }   
