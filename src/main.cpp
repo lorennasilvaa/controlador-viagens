@@ -11,13 +11,11 @@ int main()
 {
     Cidade* natal = new Cidade("Natal");
     Cidade* parnamirim = new Cidade("Parnamirim");
+    Cidade* macaiba = new Cidade("Macaíba");
 
-    Trajeto* t = new Trajeto(
-        natal,
-        parnamirim,
-        'T',
-        120
-    );
+    Trajeto* t1 = new Trajeto(natal, parnamirim,'T', 100);
+
+    Trajeto* t2 = new Trajeto(parnamirim, macaiba,'T', 60);
 
     Transporte* onibus = new Transporte(
         "Ônibus",
@@ -37,24 +35,16 @@ int main()
     passageiros.push_back(p1);
     passageiros.push_back(p2);
 
-    Viagem viagem(
-        onibus,
-        passageiros,
-        t
-    );
+    Viagem* v1 = new Viagem(onibus,passageiros,t1);
 
-    cout << onibus->getLocalAtual()->getNome()<< endl;
+    Viagem* v2 =new Viagem(onibus,passageiros,t2);
+
+    v1->setProxima(v2);
+
+    v1->iniciarViagem();
+
+    v1->avancarHoras(2);
+    v2->relatarEstado();
     
-    viagem.iniciarViagem();
-    
-    viagem.avancarHoras(1);
-    
-    viagem.relatarEstado();
-    
-    viagem.avancarHoras(1);
-    
-    viagem.relatarEstado();
-    
-    cout << onibus->getLocalAtual()->getNome()<< endl;
     return 0;
 }   
