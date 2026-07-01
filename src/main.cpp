@@ -43,7 +43,18 @@ int main()
         t
     );
 
+    cout << onibus->getLocalAtual()->getNome()<< endl;
+    
     viagem.iniciarViagem();
-
+    
+    viagem.avancarHoras(1);
+    
+    viagem.relatarEstado();
+    
+    viagem.avancarHoras(1);
+    
+    viagem.relatarEstado();
+    
+    cout << onibus->getLocalAtual()->getNome()<< endl;
     return 0;
 }   
