@@ -20,4 +20,4 @@ int main()
     Transporte guanabara("Ônibus Guanabara", 'T', 50, 80, 1, 1, &c1); 
     //Viagem natal_recife(&guanabara, &pessoas, &c1, &c2);
     return 0;
-}
+}   
