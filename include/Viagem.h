@@ -3,6 +3,7 @@
 #include "Transporte.h"
 #include "Passageiro.h"
 #include "Cidade.h"
+#include "Trajeto.h"
 
 using namespace std;
 
@@ -12,24 +13,27 @@ private:
     Transporte* transporte;
     vector<Passageiro*> passageiros;
 
-    Cidade* origem;
-    Cidade* destino;
     Viagem* proxima;
+
+    Trajeto* trajeto;
     
     int horasRestantes;
     bool emAndamento;
 
 public:
-    Viagem(Transporte* transporte, vector<Passageiro*> passageiros, Cidade* origem, Cidade* destino);
+    Viagem(Transporte* transporte, vector<Passageiro*> passageiros, Trajeto* trajeto);
 
-    void iniciarViagem(int distancia);
+    void iniciarViagem();
     void avancarHoras(int horas);
-    void relatarEstado();
     bool isEmAndamento();
 
-    Cidade *getOrigem();
-    Cidade *getDestino();
+    Trajeto* getTrajeto();
+    Transporte* getTransporte();
+
+    vector<Passageiro*> getPassageiros();
     
     void setProxima(Viagem* v);
     Viagem* getProxima();
+
+    void relatarEstado();
 };
