@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 #include "Cidade.h"
 #include "Trajeto.h"
 #include "Transporte.h"
@@ -21,4 +22,5 @@ public:
     void iniciarViagem(string nomeTransporte, vector<string> nomesPassageiros, string nomeOrigem, string nomeDestino);
     void avancarHoras(int horas);
     void relatarEstado();
+    Trajeto* buscarTrajeto(Cidade* origem, Cidade* destino);
 };
