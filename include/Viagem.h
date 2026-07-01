@@ -1,3 +1,6 @@
+#ifndef VIAGEM_H
+#define VIAGEM_H
+
 #include <vector>
 
 #include "Transporte.h"
@@ -37,3 +40,5 @@ public:
 
     void relatarEstado();
 };
+
+#endif

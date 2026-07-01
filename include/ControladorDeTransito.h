@@ -1,3 +1,6 @@
+#ifndef CONTROLADOR_DE_TRANSITO_H
+#define CONTROLADOR_DE_TRANSITO_H
+
 #include <vector>
 #include <iostream>
 #include "Cidade.h"
@@ -24,3 +27,5 @@ public:
     void relatarEstado();
     Trajeto* buscarTrajeto(Cidade* origem, Cidade* destino);
 };
+
+#endif 

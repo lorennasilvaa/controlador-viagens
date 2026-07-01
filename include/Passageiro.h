@@ -1,3 +1,6 @@
+#ifndef PASSAGEIRO_H
+#define PASSAGEIRO_H
+
 #include <string>
 #include "Cidade.h"
 using namespace std;
@@ -12,3 +15,5 @@ public:
     Cidade* getLocalAtual();
     void setLocalAtual(Cidade* local);
 };
+
+#endif
