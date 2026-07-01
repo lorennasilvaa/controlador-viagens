@@ -5,6 +5,100 @@ void ControladorDeTransito::cadastrarCidade(string nome)
     this->cidades.push_back(new Cidade(nome));
 }
 
+void ControladorDeTransito::cadastrarTrajeto(string nomeOrigem, string nomeDestino, char tipo, int distancia)
+{
+    Cidade* origem = nullptr;
+    Cidade* destino = nullptr;
+
+    for (Cidade* c : cidades)
+    {
+        if (c->getNome() == nomeOrigem)
+            origem = c;
+
+        if (c->getNome() == nomeDestino)
+            destino = c;
+    }
+
+    if (origem == nullptr || destino == nullptr)
+    {
+        cout << "Cidade não encontrada." << endl;
+        return;
+    }
+
+    Trajeto* trajeto = new Trajeto(
+        origem,
+        destino,
+        tipo,
+        distancia
+    );
+
+    trajetos.push_back(trajeto);
+
+    cout << "Trajeto cadastrado com sucesso!" << endl;
+}
+
+void ControladorDeTransito::cadastrarTransporte(string nome, char tipo, int capacidade, int velocidade, int distancia_entre_descansos, int tempo_de_descanso, string localAtual)
+{
+    Cidade* cidade = nullptr;
+
+    for (Cidade* c : cidades)
+    {
+        if (c->getNome() == localAtual)
+        {
+            cidade = c;
+            break;
+        }
+    }
+
+    if (cidade == nullptr)
+    {
+        cout << "Cidade não encontrada." << endl;
+        return;
+    }
+
+    Transporte* transporte = new Transporte(
+        nome,
+        tipo,
+        capacidade,
+        velocidade,
+        distancia_entre_descansos,
+        tempo_de_descanso,
+        cidade
+    );
+
+    transportes.push_back(transporte);
+
+    cout << "Transporte cadastrado com sucesso!" << endl;
+}
+
+void ControladorDeTransito::cadastrarPassageiro(string nome, string localAtual)
+{
+    Cidade* cidade = nullptr;
+
+    for (Cidade* c : cidades)
+    {
+        if (c->getNome() == localAtual)
+        {
+            cidade = c;
+            break;
+        }
+    }
+
+    if (cidade == nullptr)
+    {
+        cout << "Cidade não encontrada." << endl;
+        return;
+    }
+
+    Passageiro* passageiro = new Passageiro(
+        nome,
+        cidade
+    );
+
+    passageiros.push_back(passageiro);
+
+    cout << "Passageiro cadastrado com sucesso!" << endl;
+}
 
 void ControladorDeTransito::iniciarViagem(string nomeTransporte, vector<string> nomesPassageiros, string nomeOrigem, string nomeDestino)
 {
@@ -93,6 +187,28 @@ void ControladorDeTransito::avancarHoras(int horas)
             v->avancarHoras(horas);
         }
     }
+}
+
+void ControladorDeTransito::relatarEstado()
+{
+    cout << "\n===== VIAGENS EM ANDAMENTO =====\n";
+
+    bool encontrou = false;
+
+    for (Viagem* v : viagens)
+    {
+        if (v->isEmAndamento())
+        {
+            v->relatarEstado();
+            encontrou = true;
+        }
+    }
+
+    if (!encontrou)
+    {
+        cout << "Nenhuma viagem em andamento." << endl;
+    }
+
 }
 
 Trajeto *ControladorDeTransito::buscarTrajeto(Cidade *origem, Cidade *destino)
