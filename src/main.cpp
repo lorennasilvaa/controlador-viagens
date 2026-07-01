@@ -9,15 +9,41 @@ using namespace std;
 
 int main()
 {
-    Cidade c1("Natal"); 
-    Cidade c2("Recife"); 
-    
-    vector<Passageiro> pessoas;
-    pessoas.push_back(Passageiro("Lorenna", &c1));
-    pessoas.push_back(Passageiro("Thallys", &c1));
-    pessoas.push_back(Passageiro("Luiz Arthur", &c1));
+    Cidade* natal = new Cidade("Natal");
+    Cidade* parnamirim = new Cidade("Parnamirim");
 
-    Transporte guanabara("Ônibus Guanabara", 'T', 50, 80, 1, 1, &c1); 
-    //Viagem natal_recife(&guanabara, &pessoas, &c1, &c2);
+    Trajeto* t = new Trajeto(
+        natal,
+        parnamirim,
+        'T',
+        120
+    );
+
+    Transporte* onibus = new Transporte(
+        "Ônibus",
+        'T',
+        40,
+        60,
+        300,
+        2,
+        natal
+    );
+
+    Passageiro* p1 = new Passageiro("João", natal);
+    Passageiro* p2 = new Passageiro("Maria", natal);
+
+    vector<Passageiro*> passageiros;
+
+    passageiros.push_back(p1);
+    passageiros.push_back(p2);
+
+    Viagem viagem(
+        onibus,
+        passageiros,
+        t
+    );
+
+    viagem.iniciarViagem();
+
     return 0;
 }   
