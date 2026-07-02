@@ -4,6 +4,22 @@
 
 #include "ControladorDeTransito.h"
 
+void ControladorDeTransito::salvarDados()
+{
+    salvarCidades();
+    salvarTrajetos();
+    salvarTransportes();
+    salvarPassageiros();
+}
+
+void ControladorDeTransito::carregarDados()
+{
+    carregarCidades();
+    carregarTrajetos();
+    carregarTransportes();
+    carregarPassageiros();
+}
+
 void ControladorDeTransito::cadastrarCidade(string nome)
 {
     this->cidades.push_back(new Cidade(nome));
@@ -39,8 +55,6 @@ void ControladorDeTransito::cadastrarTrajeto(string nomeOrigem, string nomeDesti
     );
 
     trajetos.push_back(trajeto);
-
-    cout << "Trajeto cadastrado com sucesso!" << endl;
 }
 
 void ControladorDeTransito::cadastrarTransporte(string nome, char tipo, int capacidade, int velocidade, int distancia_entre_descansos, int tempo_de_descanso, string localAtual)
@@ -75,8 +89,6 @@ void ControladorDeTransito::cadastrarTransporte(string nome, char tipo, int capa
     );
 
     transportes.push_back(transporte);
-
-    cout << "Transporte cadastrado com sucesso!" << endl;
 }
 
 void ControladorDeTransito::cadastrarPassageiro(string nome, string localAtual)
@@ -107,8 +119,6 @@ void ControladorDeTransito::cadastrarPassageiro(string nome, string localAtual)
     );
 
     passageiros.push_back(passageiro);
-
-    cout << "Passageiro cadastrado com sucesso!" << endl;
 }
 
 void ControladorDeTransito::iniciarViagem(string nomeTransporte, vector<string> nomesPassageiros, string nomeOrigem, string nomeDestino)
@@ -295,4 +305,189 @@ void ControladorDeTransito::relatarCidadesMaisVisitadas()
     {
         cout << c->getNome() << " - " << c->getVisitas() << " visitas" << endl;
     }
+}
+
+
+
+
+
+
+
+void ControladorDeTransito::salvarCidades()
+{
+    ofstream arquivo("data/cidades.txt");
+    for(Cidade* c : cidades)
+    {
+        arquivo << c->getNome() << ";" << c->getVisitas() << endl;
+    }
+    arquivo.close();
+}
+
+void ControladorDeTransito::carregarCidades()
+{
+    ifstream arquivo("data/cidades.txt");
+
+    if(!arquivo.is_open())
+    {
+        cout << "Arquivo de cidades não encontrado." << endl;
+        return;
+    }
+
+    string nome;
+    while(getline(arquivo, nome))
+    {
+        cadastrarCidade(nome);
+    }
+    arquivo.close();
+}
+
+void ControladorDeTransito::salvarTrajetos()
+{
+    ofstream arquivo("data/trajetos.txt");
+
+    for(Trajeto* t : trajetos)
+    {  
+        arquivo << t->getOrigem()->getNome() << ";" << t->getDestino()->getNome() << ";" << t->getTipo() << ";" << t->getDistancia() << endl;
+    }
+    arquivo.close();
+}
+
+void ControladorDeTransito::carregarTrajetos()
+{
+    ifstream arquivo("data/trajetos.txt");
+
+    if(!arquivo.is_open())
+    {
+        cout << "Arquivo de trajetos não encontrado." << endl;
+        return;
+    }
+
+    string origem, destino;
+    string linha;
+
+    while(getline(arquivo, linha))
+    {
+        stringstream ss(linha);
+
+        getline(ss, origem, ';');
+        getline(ss, destino, ';');
+        
+        char tipo;
+        ss >> tipo;
+
+        ss.ignore(); // Ignora o ponto e vírgula
+
+        int distancia;
+        ss >> distancia;
+
+        cadastrarTrajeto(origem, destino, tipo, distancia);
+    }
+    arquivo.close();
+}
+
+void ControladorDeTransito::salvarTransportes()
+{
+    ofstream arquivo("data/transportes.txt");
+
+    for (Transporte* t : transportes)
+    {
+        arquivo 
+        << t->getNome() 
+        << ";" << t->getTipo() << ";" 
+        << t->getCapacidade() << ";" 
+        << t->getVelocidade() << ";" 
+        << t->getDistanciaEntreDescansos() << ";" 
+        << t->getTempoDescanso() << ";" 
+        << t->getLocalAtual()->getNome() 
+        << endl;
+    }
+    arquivo.close();
+}
+
+void ControladorDeTransito::carregarTransportes()
+{
+    ifstream arquivo("data/transportes.txt");
+
+    if(!arquivo.is_open())
+    {
+        cout << "Arquivo de transportes não encontrado." << endl;
+        return;
+    }
+
+    string linha;
+    while(getline(arquivo, linha))
+    {
+        stringstream ss(linha);
+
+        string nome;
+        getline(ss, nome, ';');
+
+        char tipo;
+        ss >> tipo;
+
+        ss.ignore(); // Ignora o ponto e vírgula
+
+        int capacidade;
+        ss >> capacidade;
+
+        ss.ignore(); // Ignora o ponto e vírgula
+
+        int velocidade;
+        ss >> velocidade;
+
+        ss.ignore(); // Ignora o ponto e vírgula
+
+        int distancia_entre_descansos;
+        ss >> distancia_entre_descansos;
+
+        ss.ignore(); // Ignora o ponto e vírgula
+
+        int tempo_de_descanso;
+        ss >> tempo_de_descanso;
+
+        ss.ignore(); // Ignora o ponto e vírgula
+
+        string local_atual;
+        getline(ss, local_atual);
+
+        cadastrarTransporte(nome, tipo, capacidade, velocidade, distancia_entre_descansos, tempo_de_descanso, local_atual);
+    }
+    arquivo.close();
+}
+
+void ControladorDeTransito::salvarPassageiros()
+{
+    ofstream arquivo("data/passageiros.txt");
+
+    for (Passageiro* p : passageiros)
+    {
+        arquivo << p->getNome() << ";" << p->getLocalAtual()->getNome() << endl;
+    }
+    arquivo.close();
+}
+
+void ControladorDeTransito::carregarPassageiros()
+{
+    ifstream arquivo("data/passageiros.txt");
+
+    if(!arquivo.is_open())
+    {
+        cout << "Arquivo de passageiros não encontrado." << endl;
+        return;
+    }
+
+    string linha;
+    while(getline(arquivo, linha))
+    {
+        stringstream ss(linha);
+
+        string nome;
+        getline(ss, nome, ';');
+
+        string local_atual;
+        getline(ss, local_atual);
+
+        cadastrarPassageiro(nome, local_atual);
+    }
+    arquivo.close();
 }

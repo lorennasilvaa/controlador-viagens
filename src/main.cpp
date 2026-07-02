@@ -12,50 +12,26 @@ int main()
 {
     ControladorDeTransito sistema;
 
+    sistema.carregarDados();
+
     sistema.cadastrarCidade("Natal");
-    sistema.cadastrarCidade("Parnamirim");
-    sistema.cadastrarCidade("Macaíba");
-    sistema.cadastrarCidade("São Gonçalo do Amarante");
-    sistema.cadastrarCidade("Extremoz");
+    sistema.cadastrarCidade("Recife");
+
 
     sistema.cadastrarTrajeto(
         "Natal",
-        "Parnamirim",
+        "Recife",
         'T',
-        120
-    );
-
-    sistema.cadastrarTrajeto(
-        "Natal",
-        "Macaíba",
-        'T',
-        80
-    );
-
-    sistema.cadastrarTrajeto(
-        "Natal",
-        "São Gonçalo do Amarante",
-        'T',
-        100
+        300
     );
 
     sistema.cadastrarTransporte(
         "Ônibus",
         'T',
         40,
-        60,
-        300,
-        2,
-        "Natal"
-    );
-
-    sistema.cadastrarTransporte(
-        "Carro",
-        'C',
-        4,
         80,
-        200,
-        1,
+        400,
+        2,
         "Natal"
     );
 
@@ -64,38 +40,7 @@ int main()
         "Natal"
     );
 
-    sistema.cadastrarPassageiro(
-        "Maria",
-        "Natal"
-    );
+    sistema.salvarDados();
 
-    vector<string> nomes;
-    
-    nomes.push_back("João");
-    nomes.push_back("Maria");
-    
-    sistema.iniciarViagem(
-        "Ônibus",
-        nomes,
-        "Natal",
-        "Parnamirim"
-    );
-    
-    sistema.iniciarViagem(
-        "Carro",
-        nomes,
-        "Natal",
-        "Macaíba"
-    );
-
-    
-    sistema.relatarEstado();
-    sistema.avancarHoras(1);
-    sistema.avancarHoras(1);
-    sistema.relatarEstado();
-    
-
-    //sistema.relatarPassageiros();
-    //sistema.relatarTransportes();
     return 0;
 }   

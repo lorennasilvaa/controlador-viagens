@@ -12,6 +12,8 @@
 
 #include <vector>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 #include "Cidade.h"
 #include "Trajeto.h"
@@ -29,7 +31,27 @@ private:
     vector<Passageiro*> passageiros;
     vector<Viagem*> viagens;
 
+    // Métodos utilizados na persistência de dados
+    //void adicionarCidade(string nome, int visitas = 0);
+    void salvarCidades();
+    void carregarCidades();
+
+    //void adicionarTrajeto(Cidade* origem, Cidade* destino, char tipo, int distancia);
+    void salvarTrajetos();
+    void carregarTrajetos();
+    
+    //void adicionarTransporte(string nome, char tipo, int capacidade, int velocidade, int distancia_entre_descansos, int tempo_de_descanso, Cidade* localAtual);
+    void salvarTransportes();
+    void carregarTransportes();
+    
+    //void adicionarPassageiro(string nome, Cidade* localAtual);
+    void salvarPassageiros();
+    void carregarPassageiros();
+
 public:
+    void salvarDados();
+    void carregarDados();
+
     void cadastrarCidade(string nome);
     void cadastrarTrajeto(string nomeOrigem, string nomeDestino, char tipo, int distancia);
     void cadastrarTransporte(string nome, char tipo, int capacidade, int velocidade, int distancia_entre_descansos, int tempo_de_descanso, string localAtual);
