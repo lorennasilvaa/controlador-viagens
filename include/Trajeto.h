@@ -4,7 +4,6 @@
  * Data: 30/06/2026
  * Descrição:
  * Cabeçalho da classe Trajeto, responsável por definir os métodos e atributos para caracterizar um objeto do tipo Trajeto. 
- * Cada trajeto possui cidade de origem e cidade de destino, o tipo do trajeto e a distância entre origem e destino. 
 */
 
 #ifndef TRAJETO_H

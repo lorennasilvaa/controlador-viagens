@@ -3,8 +3,7 @@
  * Autor: Lorenna Mirely de Sousa Silva
  * Data: 01/06/2026
  * Descrição:
- * Cabeçalho da classe ControladorDeTransito, responsável por definir os métodos e atributos para caracterizar um objeto do tipo ControladorDeTransito. 
- * O Controlador de Transito possui uma lista das cidades, trajetos, transportes, passageiros e viagens existentes no sistema. ALém de poder cadastrá-los, ele é responsável por gerenciar as viagens.  
+ * Cabeçalho da classe ControladorDeTransito, responsável por definir os métodos e atributos para caracterizar um objeto do tipo ControladorDeTransito.  
 */
 
 

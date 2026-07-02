@@ -4,7 +4,6 @@
  * Data: 30/06/2026
  * Descrição:
  * Cabeçalho da classe Transporte, responsável por definir os métodos e atributos para caracterizar um objeto do tipo Transporte. 
- * Cada transporte possui um nome, um tipo, número de passageiros, a velocidade, distancia entre os descansos, tempo de descanso e o local onde se encontra o transporte atualmente. 
 */
 
 #ifndef TRANSPORTE_H

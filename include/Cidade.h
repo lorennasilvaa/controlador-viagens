@@ -4,7 +4,6 @@
  * Data: 30/06/2026
  * Descrição:
  * Cabeçalho da classe cidade, responsável por definir os métodos e atributos para caracterizar um objeto do tipo Cidade. 
- * Cada cidade possui um nome. 
 */
 
 #ifndef CIDADE_H
