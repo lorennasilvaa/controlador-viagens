@@ -1,3 +1,7 @@
+/* Representa um trajeto no sistema
+ * Cada trajeto possui cidade de origem e cidade de destino, o tipo do trajeto e a distância entre origem e destino. 
+*/
+
 #include "Trajeto.h"
 
 Trajeto::Trajeto(Cidade *origem, Cidade *destino, char tipo, int distancia)

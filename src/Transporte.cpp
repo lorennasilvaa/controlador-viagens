@@ -1,3 +1,7 @@
+/* Representa um transporte no sistema.
+ * Cada transporte possui um nome, um tipo, número de passageiros, a velocidade, distancia entre os descansos, tempo de descanso e o local onde se encontra o transporte atualmente. 
+*/
+
 #include "Transporte.h"
 
 Transporte::Transporte(string nome, char tipo, int capacidade, int velocidade, int distancia_entre_descansos, int tempo_de_descanso, Cidade *localAtual)

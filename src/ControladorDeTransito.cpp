@@ -1,3 +1,7 @@
+/* Classe responsável por ser a ponte entre as outras classes.
+ * O Controlador de Transito possui uma lista das cidades, trajetos, transportes, passageiros e viagens existentes no sistema. ALém de poder cadastrá-los, ele é responsável por gerenciar as viagens. 
+*/
+
 #include "ControladorDeTransito.h"
 
 void ControladorDeTransito::cadastrarCidade(string nome)
@@ -10,6 +14,7 @@ void ControladorDeTransito::cadastrarTrajeto(string nomeOrigem, string nomeDesti
     Cidade* origem = nullptr;
     Cidade* destino = nullptr;
 
+    // encontra o endereço de memória da origem e dos destino baseado nos nomes informados
     for (Cidade* c : cidades)
     {
         if (c->getNome() == nomeOrigem)
@@ -25,6 +30,7 @@ void ControladorDeTransito::cadastrarTrajeto(string nomeOrigem, string nomeDesti
         return;
     }
 
+    // cria uma instancia de trajeto
     Trajeto* trajeto = new Trajeto(
         origem,
         destino,
@@ -41,6 +47,7 @@ void ControladorDeTransito::cadastrarTransporte(string nome, char tipo, int capa
 {
     Cidade* cidade = nullptr;
 
+    // encontra o endereço de memória da cidade onde o transporte está situado baseado no nome informado
     for (Cidade* c : cidades)
     {
         if (c->getNome() == localAtual)
@@ -56,6 +63,7 @@ void ControladorDeTransito::cadastrarTransporte(string nome, char tipo, int capa
         return;
     }
 
+    // cria uma instancia de transporte
     Transporte* transporte = new Transporte(
         nome,
         tipo,
@@ -75,6 +83,8 @@ void ControladorDeTransito::cadastrarPassageiro(string nome, string localAtual)
 {
     Cidade* cidade = nullptr;
 
+    // encontra o endereço de memória da cidade onde o transporte está situado baseado no nome informado
+    // fazer uma função pra isso depois
     for (Cidade* c : cidades)
     {
         if (c->getNome() == localAtual)
@@ -90,6 +100,7 @@ void ControladorDeTransito::cadastrarPassageiro(string nome, string localAtual)
         return;
     }
 
+    // cria uma instancia de passageiro
     Passageiro* passageiro = new Passageiro(
         nome,
         cidade
@@ -109,49 +120,41 @@ void ControladorDeTransito::iniciarViagem(string nomeTransporte, vector<string> 
 
     vector<Passageiro*> passageirosSelecionados;
 
-    // busca transportes
+    // busca o transporte pelo nome
     for(Transporte* t : transportes){
-
         if(t->getNome() == nomeTransporte){
 
             transporte = t;
             break;
         }
-
     }
 
-    //busca cidades
+    //busca as cidades de origem e destino pelo nome
     for(Cidade* c : cidades){
-
         if(c->getNome() == nomeOrigem)
             origem = c;
 
         if(c->getNome() == nomeDestino)
             destino = c;
-
     }
 
-    if(transporte == nullptr ||
-       origem == nullptr ||
-       destino == nullptr){
-
+    if(transporte == nullptr || origem == nullptr || destino == nullptr){
         cout << "Dados inválidos" << endl;
         return;
     }
 
     // testa se o transporte está na origem
-    if(transporte->getLocalAtual()!=origem){
-
+    if(transporte->getLocalAtual() != origem){
         cout << "Transporte não está na cidade." << endl;
         return;
     }
 
-    // busca passageiros
+    // busca passageiros, se o passageiro nao estiver na cidade de origem ele nao pode viajar
     for(string nome : nomesPassageiros){
         for(Passageiro* p : passageiros){
-            if(p->getNome()==nome){
-                if(p->getLocalAtual()!=origem){
-                    cout<<"Passageiro fora da cidade."<<endl;
+            if(p->getNome() == nome){
+                if(p->getLocalAtual() != origem){
+                    cout << "Passageiro fora da cidade." << endl;
                     return;
                 }
                 passageirosSelecionados.push_back(p);
@@ -161,15 +164,15 @@ void ControladorDeTransito::iniciarViagem(string nomeTransporte, vector<string> 
 
     if(passageirosSelecionados.size() > transporte->getCapacidade()){
 
-        cout<<"Capacidade excedida"<<endl;
+        cout << "Capacidade excedida" << endl;
         return;
     }
 
-    Trajeto* trajeto = buscarTrajeto(origem,destino);
+    Trajeto* trajeto = buscarTrajeto(origem, destino);
 
-    if(trajeto==nullptr){
+    if(trajeto == nullptr){
 
-        cout<<"Trajeto não encontrado"<<endl;
+        cout << "Trajeto não encontrado" << endl;
         return;
     }
 
@@ -191,7 +194,7 @@ void ControladorDeTransito::avancarHoras(int horas)
 
 void ControladorDeTransito::relatarEstado()
 {
-    cout << "\n===== VIAGENS EM ANDAMENTO =====\n";
+    cout << "\n===== VIAGENS EM ANDAMENTO =====\n" << endl;
 
     bool encontrou = false;
 
@@ -214,13 +217,9 @@ void ControladorDeTransito::relatarEstado()
 Trajeto *ControladorDeTransito::buscarTrajeto(Cidade *origem, Cidade *destino)
 {
     for(Trajeto* t : trajetos){
-
-        if(
-            t->getOrigem() == origem &&
-            t->getDestino() == destino
-        )
+        if(t->getOrigem() == origem && t->getDestino() == destino){
             return t;
-
+        }
     }
     return nullptr;
 }
