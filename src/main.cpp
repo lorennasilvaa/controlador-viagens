@@ -89,11 +89,11 @@ int main()
     );
 
     
-    sistema.relatarViagens();
+    sistema.relatarEstado();
     sistema.avancarHoras(1);
     sistema.avancarHoras(1);
-    sistema.relatarCidadesMaisVisitadas();
-
+    sistema.relatarEstado();
+    
 
     //sistema.relatarPassageiros();
     //sistema.relatarTransportes();

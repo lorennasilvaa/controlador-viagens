@@ -37,7 +37,7 @@ public:
 
     void iniciarViagem(string nomeTransporte, vector<string> nomesPassageiros, string nomeOrigem, string nomeDestino);
     void avancarHoras(int horas);
-    void relatarEstado(); // relata o estado da viagem
+    void relatarEstado(); // chama todos os relatórios de uma só vez (troquei porque ficou genérico com a adição do relatório de viagens)
     
     Trajeto* buscarTrajeto(Cidade* origem, Cidade* destino); // busca os trajetos que serão utilizados na viagem
 

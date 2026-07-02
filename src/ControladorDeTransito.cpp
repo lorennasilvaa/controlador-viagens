@@ -194,24 +194,15 @@ void ControladorDeTransito::avancarHoras(int horas)
 
 void ControladorDeTransito::relatarEstado()
 {
-    cout << "\n===== VIAGENS EM ANDAMENTO =====\n" << endl;
-
-    bool encontrou = false;
-
-    for (Viagem* v : viagens)
-    {
-        if (v->isEmAndamento())
-        {
-            v->relatarEstado();
-            encontrou = true;
-        }
-    }
-
-    if (!encontrou)
-    {
-        cout << "Nenhuma viagem em andamento." << endl;
-    }
-
+    cout << "\n===== SITUAÇÃO ATUAL DO SISTEMA =====\n" << endl;
+    
+    relatarPassageiros();
+    
+    relatarTransportes();
+    
+    relatarViagens();
+    
+    relatarCidadesMaisVisitadas();
 }
 
 Trajeto *ControladorDeTransito::buscarTrajeto(Cidade *origem, Cidade *destino)
