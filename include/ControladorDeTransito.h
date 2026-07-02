@@ -43,7 +43,7 @@ public:
 
     // Métodos dos relatórios
     void relatarPassageiros();
-    //void relatarTransportes();
+    void relatarTransportes();
 };
 
 #endif 

@@ -252,3 +252,27 @@ void ControladorDeTransito::relatarPassageiros()
         }
     }
 }
+
+void ControladorDeTransito::relatarTransportes()
+{
+    cout << "======= RELATÓRIO DE TRANSPORTES =======" << endl;
+
+    for(Transporte* t : transportes)
+    {
+        bool encontrou = false;
+
+        for(Viagem* v : viagens)
+        {
+            if(v->isEmAndamento() && v->getTransporte() == t){
+                 cout << t->getNome() << " - Em trânsito (" << v->getTrajeto()->getOrigem()->getNome() << " -> "<< v->getTrajeto()->getDestino()->getNome() << ")" << endl;
+
+                encontrou = true;
+                break;
+            }
+        }
+
+        if(!encontrou){
+            cout << t->getNome() << " - " << t->getLocalAtual()->getNome() << endl;
+        }
+    }
+}

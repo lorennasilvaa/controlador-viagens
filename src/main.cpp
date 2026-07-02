@@ -56,7 +56,8 @@ int main()
     
     sistema.relatarEstado();
 
-    sistema.relatarPassageiros();
-    
+    //sistema.relatarPassageiros();
+    sistema.relatarTransportes();
+
     return 0;
 }   
