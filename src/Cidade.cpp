@@ -20,6 +20,11 @@ int Cidade::getVisitas()
     return visitas;
 }
 
+void Cidade::setVisitas(int visitas)
+{
+    this->visitas = visitas;
+}
+
 void Cidade::incrementarVisitas()
 {
     visitas++;

@@ -23,6 +23,7 @@ public:
     Cidade(string nome);
     string getNome();
     int getVisitas();
+    void setVisitas(int visitas);
     void incrementarVisitas();
 };
 
