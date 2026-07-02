@@ -1,3 +1,12 @@
+/*
+ * Arquivo: Viagem.h 
+ * Autor: Lorenna Mirely de Sousa Silva
+ * Data: 30/06/2026
+ * Descrição:
+ * Cabeçalho da classe Viagem, responsável por definir os métodos e atributos para caracterizar um objeto do tipo Viagem. 
+ * Cada viagem possui o transporte que será utilizado, um vetor de passageiros que farão parte da viagem, o trajeto que será executado, as horas restantes para o término da viagem e se ela está em andamento ou não. 
+*/
+
 #ifndef VIAGEM_H
 #define VIAGEM_H
 

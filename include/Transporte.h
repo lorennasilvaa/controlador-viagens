@@ -1,8 +1,19 @@
+/*
+ * Arquivo: Transporte.h 
+ * Autor: Lorenna Mirely de Sousa Silva
+ * Data: 30/06/2026
+ * Descrição:
+ * Cabeçalho da classe Transporte, responsável por definir os métodos e atributos para caracterizar um objeto do tipo Transporte. 
+ * Cada transporte possui um nome, um tipo, número de passageiros, a velocidade, distancia entre os descansos, tempo de descanso e o local onde se encontra o transporte atualmente. 
+*/
+
 #ifndef TRANSPORTE_H
 #define TRANSPORTE_H
 
 #include <string>
+
 #include "Cidade.h"
+
 using namespace std;
 
 class Transporte {
@@ -18,6 +29,7 @@ private:
     int tempo_de_descanso_atual;  // em horas
 
     Cidade* localAtual;
+
 public:
     Transporte(string nome, char tipo, int capacidade, int velocidade, int distancia_entre_descansos, int tempo_de_descanso,  Cidade* localAtual);
 
