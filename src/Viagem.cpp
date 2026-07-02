@@ -49,6 +49,7 @@ void Viagem::avancarHoras(int horas)
         emAndamento = false;
         transporte->setLocalAtual(trajeto->getDestino());
         
+        trajeto->getDestino()->incrementarVisitas(); // incrementa a quantidade de visitas da cidade de destino
         // altera o local de todos os passageiros ao fim da viagem para o local de destino
         // ALTERAR ISSO AQUI PARA SÓ MOVER OS PASSAGEIROS PARA O LOCAL DE DESTINO FINAL EM VIAGENS INTERMEDIARIAS
         for(Passageiro* p : passageiros){

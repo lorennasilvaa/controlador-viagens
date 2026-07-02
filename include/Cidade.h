@@ -17,10 +17,13 @@ class Cidade
 {
 private:
     string nome; 
+    int visitas; // quantidade de vezes que a cidade foi visitada
 
 public:
     Cidade(string nome);
     string getNome();
+    int getVisitas();
+    void incrementarVisitas();
 };
 
 #endif

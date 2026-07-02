@@ -295,3 +295,13 @@ void ControladorDeTransito::relatarViagens()
     if(!encontrou)
         cout << "Nenhuma viagem em andamento.\n";
 }
+
+void ControladorDeTransito::relatarCidadesMaisVisitadas()
+{
+    cout << "======= RELATÓRIO DE CIDADES MAIS VISITADAS =======" << endl;
+
+    for(Cidade* c : cidades)
+    {
+        cout << c->getNome() << " - " << c->getVisitas() << " visitas" << endl;
+    }
+}

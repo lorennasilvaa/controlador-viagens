@@ -45,6 +45,7 @@ public:
     void relatarPassageiros();
     void relatarTransportes();
     void relatarViagens();
+    void relatarCidadesMaisVisitadas();
 };
 
 #endif 

@@ -14,12 +14,29 @@ int main()
 
     sistema.cadastrarCidade("Natal");
     sistema.cadastrarCidade("Parnamirim");
+    sistema.cadastrarCidade("Macaíba");
+    sistema.cadastrarCidade("São Gonçalo do Amarante");
+    sistema.cadastrarCidade("Extremoz");
 
     sistema.cadastrarTrajeto(
         "Natal",
         "Parnamirim",
         'T',
         120
+    );
+
+    sistema.cadastrarTrajeto(
+        "Natal",
+        "Macaíba",
+        'T',
+        80
+    );
+
+    sistema.cadastrarTrajeto(
+        "Natal",
+        "São Gonçalo do Amarante",
+        'T',
+        100
     );
 
     sistema.cadastrarTransporte(
@@ -32,14 +49,30 @@ int main()
         "Natal"
     );
 
+    sistema.cadastrarTransporte(
+        "Carro",
+        'C',
+        4,
+        80,
+        200,
+        1,
+        "Natal"
+    );
+
     sistema.cadastrarPassageiro(
         "João",
+        "Natal"
+    );
+
+    sistema.cadastrarPassageiro(
+        "Maria",
         "Natal"
     );
 
     vector<string> nomes;
     
     nomes.push_back("João");
+    nomes.push_back("Maria");
     
     sistema.iniciarViagem(
         "Ônibus",
@@ -47,9 +80,19 @@ int main()
         "Natal",
         "Parnamirim"
     );
+    
+    sistema.iniciarViagem(
+        "Carro",
+        nomes,
+        "Natal",
+        "Macaíba"
+    );
 
     
     sistema.relatarViagens();
+    sistema.avancarHoras(1);
+    sistema.avancarHoras(1);
+    sistema.relatarCidadesMaisVisitadas();
 
 
     //sistema.relatarPassageiros();
