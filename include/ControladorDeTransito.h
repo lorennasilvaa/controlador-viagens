@@ -44,6 +44,7 @@ public:
     // Métodos dos relatórios
     void relatarPassageiros();
     void relatarTransportes();
+    void relatarViagens();
 };
 
 #endif 

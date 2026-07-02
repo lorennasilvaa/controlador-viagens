@@ -48,16 +48,11 @@ int main()
         "Parnamirim"
     );
 
-    sistema.avancarHoras(1);
     
-    sistema.relatarEstado();
-    
-    sistema.avancarHoras(1);
-    
-    sistema.relatarEstado();
+    sistema.relatarViagens();
+
 
     //sistema.relatarPassageiros();
-    sistema.relatarTransportes();
-
+    //sistema.relatarTransportes();
     return 0;
 }   

@@ -276,3 +276,22 @@ void ControladorDeTransito::relatarTransportes()
         }
     }
 }
+
+void ControladorDeTransito::relatarViagens()
+{
+    cout << "======= RELATÓRIO DE VIAGENS =======" << endl;
+
+    bool encontrou = false;
+
+    for(Viagem* v : viagens)
+    {
+        if(v->isEmAndamento())
+        {
+            v->relatarEstado();
+            encontrou = true;
+        }
+    }
+
+    if(!encontrou)
+        cout << "Nenhuma viagem em andamento.\n";
+}
