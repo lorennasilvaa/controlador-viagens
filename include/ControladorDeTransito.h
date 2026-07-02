@@ -40,6 +40,10 @@ public:
     void relatarEstado(); // relata o estado da viagem
     
     Trajeto* buscarTrajeto(Cidade* origem, Cidade* destino); // busca os trajetos que serão utilizados na viagem
+
+    // Métodos dos relatórios
+    void relatarPassageiros();
+    //void relatarTransportes();
 };
 
 #endif 

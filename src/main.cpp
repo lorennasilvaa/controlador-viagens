@@ -55,6 +55,8 @@ int main()
     sistema.avancarHoras(1);
     
     sistema.relatarEstado();
+
+    sistema.relatarPassageiros();
     
     return 0;
 }   

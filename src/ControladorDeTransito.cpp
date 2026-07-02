@@ -223,3 +223,32 @@ Trajeto *ControladorDeTransito::buscarTrajeto(Cidade *origem, Cidade *destino)
     }
     return nullptr;
 }
+
+void ControladorDeTransito::relatarPassageiros()
+{
+    cout << "======= RELATÓRIO DE PASSAGEIROS =======" << endl;
+    for(Passageiro* p : passageiros){
+        bool encontrou = false;
+        for (Viagem* v : viagens)
+        {
+            if(!v->isEmAndamento()){
+                continue;
+            }
+
+            for(Passageiro* vp : v->getPassageiros()){
+                if(vp == p){
+                    cout << p->getNome() << " - Em trânsito (" << v->getTrajeto()->getOrigem()->getNome() << " -> " << v->getTrajeto()->getDestino()->getNome() << ") - " << v->getTransporte()->getNome() << endl;
+
+                    encontrou = true;
+                    break;
+                }
+            }
+            if(encontrou){
+                break;
+            }
+        }
+        if(!encontrou){
+            cout << p->getNome() << " - Local atual: " << p->getLocalAtual()->getNome() << endl;
+        }
+    }
+}
