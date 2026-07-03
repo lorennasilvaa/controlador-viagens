@@ -12,35 +12,12 @@ int main()
 {
     ControladorDeTransito sistema;
 
+    cout << "Carregando dados...\n\n";
+
     sistema.carregarDados();
 
-    sistema.cadastrarCidade("Natal");
-    sistema.cadastrarCidade("Recife");
-
-
-    sistema.cadastrarTrajeto(
-        "Natal",
-        "Recife",
-        'T',
-        300
-    );
-
-    sistema.cadastrarTransporte(
-        "Ônibus",
-        'T',
-        40,
-        80,
-        400,
-        2,
-        "Natal"
-    );
-
-    sistema.cadastrarPassageiro(
-        "João",
-        "Natal"
-    );
-
-    sistema.salvarDados();
+    cout << "\nEstado após carregar:\n";
+    sistema.relatarEstado();
 
     return 0;
 }   

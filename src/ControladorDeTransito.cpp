@@ -14,14 +14,27 @@ void ControladorDeTransito::salvarDados()
 
 void ControladorDeTransito::carregarDados()
 {
-    carregarCidades();
+    cout << "carregando cidades..." << endl;
+    carregarCidades();    
+
+    cout << "carregando trajetos..." << endl;
     carregarTrajetos();
+    
+    cout << "carregando transportes..." << endl;
     carregarTransportes();
+    
+    cout << "carregando passageiros..." << endl;
     carregarPassageiros();
 }
 
 void ControladorDeTransito::cadastrarCidade(string nome)
 {
+    // for (Cidade* c : cidades)
+    // {
+    //     if (c->getNome() == nome){
+    //         return;
+    //     }
+    // }
     this->cidades.push_back(new Cidade(nome));
 }
 
@@ -333,11 +346,35 @@ void ControladorDeTransito::carregarCidades()
         return;
     }
 
-    string nome;
-    while(getline(arquivo, nome))
+    string linha;
+
+    while(getline(arquivo, linha))
     {
+        cout << "linha lida: " << linha << endl;
+
+        stringstream ss(linha);
+
+        string nome;
+        getline(ss, nome, ';');
+
+        int visitas;
+        ss >> visitas;
+
+        cout << "nome: " << nome << ", visitas: " << visitas << endl;
+
         cadastrarCidade(nome);
+
+        for(Cidade* c : cidades)
+        {
+            if(c->getNome() == nome)
+            {
+                c->setVisitas(visitas);
+                break;
+            }
+        }
+        cout << "Cidade carregada: " << nome << ", visitas: " << visitas << endl;
     }
+
     arquivo.close();
 }
 
@@ -381,6 +418,8 @@ void ControladorDeTransito::carregarTrajetos()
         ss >> distancia;
 
         cadastrarTrajeto(origem, destino, tipo, distancia);
+
+        cout << "Trajeto carregado: " << origem << " -> " << destino << ", tipo: " << tipo << ", distancia: " << distancia << endl;
     }
     arquivo.close();
 }
@@ -451,6 +490,8 @@ void ControladorDeTransito::carregarTransportes()
         getline(ss, local_atual);
 
         cadastrarTransporte(nome, tipo, capacidade, velocidade, distancia_entre_descansos, tempo_de_descanso, local_atual);
+
+        cout << "Transporte carregado: " << nome << ", tipo: " << tipo << ", capacidade: " << capacidade << ", velocidade: " << velocidade << ", distancia entre descansos: " << distancia_entre_descansos << ", tempo de descanso: " << tempo_de_descanso << ", local atual: " << local_atual << endl;
     }
     arquivo.close();
 }
@@ -488,6 +529,8 @@ void ControladorDeTransito::carregarPassageiros()
         getline(ss, local_atual);
 
         cadastrarPassageiro(nome, local_atual);
+
+        cout << "Passageiro carregado: " << nome << ", local atual: " << local_atual << endl;
     }
     arquivo.close();
 }
