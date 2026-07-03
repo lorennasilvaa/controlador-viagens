@@ -29,12 +29,12 @@ void ControladorDeTransito::carregarDados()
 
 void ControladorDeTransito::cadastrarCidade(string nome)
 {
-    // for (Cidade* c : cidades)
-    // {
-    //     if (c->getNome() == nome){
-    //         return;
-    //     }
-    // }
+    for (Cidade* c : cidades)
+    {
+        if (c->getNome() == nome){
+            return;
+        }
+    }
     this->cidades.push_back(new Cidade(nome));
 }
 
@@ -67,6 +67,13 @@ void ControladorDeTransito::cadastrarTrajeto(string nomeOrigem, string nomeDesti
         distancia
     );
 
+    for(Trajeto* t : trajetos)
+    {
+        if(t->getOrigem() == origem && t->getDestino() == destino)
+        {
+            return;
+        }
+    }
     trajetos.push_back(trajeto);
 }
 
@@ -101,6 +108,13 @@ void ControladorDeTransito::cadastrarTransporte(string nome, char tipo, int capa
         cidade
     );
 
+    for (Transporte* t : transportes)
+    {
+        if (t->getNome() == nome)
+        {
+            return;
+        }
+    }
     transportes.push_back(transporte);
 }
 
@@ -130,6 +144,14 @@ void ControladorDeTransito::cadastrarPassageiro(string nome, string localAtual)
         nome,
         cidade
     );
+
+    for (Passageiro* p : passageiros)
+    {
+        if (p->getNome() == nome)
+        {
+            return;
+        }
+    }
 
     passageiros.push_back(passageiro);
 }
