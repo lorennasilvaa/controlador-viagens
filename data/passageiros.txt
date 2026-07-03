@@ -1,4 +1,1 @@
-Thallys;Natal
-Lorenna;Natal
-Luiz Arthur;Natal
-Leonardo;Santo Antônio
+Joao;Natal

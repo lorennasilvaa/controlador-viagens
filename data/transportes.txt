@@ -1,2 +1,1 @@
-Ônibus Azul;T;40;80;400;2;Natal
-Barco;A;20;80;300;2;Natal
+Onibus;T;40;80;400;2;Natal

@@ -1,8 +1,1 @@
-Natal;Parnamirim;T;120
-Natal;Macaíba;T;80
-Parnamirim;Monte Alegre;T;60
-Monte Alegre;Brejinho;T;30
-Brejinho;Santo Antônio;A;10
-Santo Antônio;Nova Cruz;A;70
-Natal;São Gonçalo do Amarante;T;30
-Natal;Extremoz;T;60
+Natal;Recife;T;300
