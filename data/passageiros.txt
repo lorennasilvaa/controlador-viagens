@@ -1,1 +1,4 @@
-Joao;Natal
+Lorenna;Recife
+Thallys;Recife
+Arthur;Brasilia
+Ana;Brasilia

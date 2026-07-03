@@ -14,16 +14,9 @@ void ControladorDeTransito::salvarDados()
 
 void ControladorDeTransito::carregarDados()
 {
-    cout << "carregando cidades..." << endl;
     carregarCidades();    
-
-    cout << "carregando trajetos..." << endl;
     carregarTrajetos();
-    
-    cout << "carregando transportes..." << endl;
-    carregarTransportes();
-    
-    cout << "carregando passageiros..." << endl;
+    carregarTransportes();    
     carregarPassageiros();
 }
 
@@ -372,8 +365,6 @@ void ControladorDeTransito::carregarCidades()
 
     while(getline(arquivo, linha))
     {
-        cout << "linha lida: " << linha << endl;
-
         stringstream ss(linha);
 
         string nome;
@@ -381,8 +372,6 @@ void ControladorDeTransito::carregarCidades()
 
         int visitas;
         ss >> visitas;
-
-        cout << "nome: " << nome << ", visitas: " << visitas << endl;
 
         cadastrarCidade(nome);
 
@@ -394,7 +383,6 @@ void ControladorDeTransito::carregarCidades()
                 break;
             }
         }
-        cout << "Cidade carregada: " << nome << ", visitas: " << visitas << endl;
     }
 
     arquivo.close();
@@ -440,8 +428,6 @@ void ControladorDeTransito::carregarTrajetos()
         ss >> distancia;
 
         cadastrarTrajeto(origem, destino, tipo, distancia);
-
-        cout << "Trajeto carregado: " << origem << " -> " << destino << ", tipo: " << tipo << ", distancia: " << distancia << endl;
     }
     arquivo.close();
 }
@@ -513,7 +499,6 @@ void ControladorDeTransito::carregarTransportes()
 
         cadastrarTransporte(nome, tipo, capacidade, velocidade, distancia_entre_descansos, tempo_de_descanso, local_atual);
 
-        cout << "Transporte carregado: " << nome << ", tipo: " << tipo << ", capacidade: " << capacidade << ", velocidade: " << velocidade << ", distancia entre descansos: " << distancia_entre_descansos << ", tempo de descanso: " << tempo_de_descanso << ", local atual: " << local_atual << endl;
     }
     arquivo.close();
 }
@@ -552,7 +537,6 @@ void ControladorDeTransito::carregarPassageiros()
 
         cadastrarPassageiro(nome, local_atual);
 
-        cout << "Passageiro carregado: " << nome << ", local atual: " << local_atual << endl;
     }
     arquivo.close();
 }

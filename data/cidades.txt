@@ -1,2 +1,4 @@
 Natal;0
-Recife;0
+Recife;1
+Macei¢;0
+Brasilia;0

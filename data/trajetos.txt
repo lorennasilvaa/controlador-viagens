@@ -1,1 +1,5 @@
-Natal;Recife;T;300
+Natal;Recife;T;100
+Natal;Macei¢;T;20
+Macei¢;Recife;T;50
+Recife;Brasilia;A;100
+Brasilia;Recife;A;10

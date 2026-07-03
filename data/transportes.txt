@@ -1,1 +1,2 @@
-Onibus;T;40;80;400;2;Natal
+Onibus;T;40;70;1;5;Recife
+Barco;A;5;60;1;1;Brasilia
